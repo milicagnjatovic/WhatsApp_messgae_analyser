@@ -83,13 +83,14 @@ for p in person_messages.keys():
 fig = plt.figure()
 fig.set_figheight(8)
 fig.set_figwidth(8)
+fig.canvas.set_window_title(sys.argv[1])
 
 ax1 = plt.subplot2grid(shape = (3,2), loc=(0,0))
 ax1.bar(person_messages.keys(), person_messages.values(), color = clr)
-ax1.set_title('Poslato poruka')
+ax1.set_title('Messages sent')
 ax2 = plt.subplot2grid(shape = (3,2), loc=(0,1))
 ax2.bar(person_chars.keys(), person_chars.values(), color = clr)
-ax2.set_title('Poslato slova')
+ax2.set_title('Characters sent')
 
 ax3 = plt.subplot2grid(shape = (3,2), loc=(1, 0), colspan = 2)
 vals = {}
@@ -108,11 +109,11 @@ for key in first_message.keys():
     if i>m:
         m = i
 ax3.set_ylim((1, m+2))
-ax3.set_title('Datumi i ko je prvi pisao')
+ax3.set_title('Dates and who texted first')
 
 ax4 = plt.subplot2grid(shape = (3,2), loc=(2,0), colspan = 2)
 ax4.plot(list(dates.keys()), dates.values())
-ax4.set_title('Poruka po danima')
+ax4.set_title('Number of messages by dates')
 
 plt.tight_layout()
 plt.show()
